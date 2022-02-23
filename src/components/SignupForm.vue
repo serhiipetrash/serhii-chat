@@ -7,17 +7,22 @@
   </form>
 </template>
 
+
 <script setup>
 import { ref } from 'vue';
+import { useSignup } from '../composables/useSignup';
+// import useSignup from '../composables/useSignup'
 
 const displayName = ref('')
 const email = ref('')
 const password = ref('')
 
-const handleSubmit = () => {
-  console.log(displayName.value, email.value, password.value);
-}
+const { error, signup } = useSignup()
 
+const handleSubmit = async () => {
+  await signup(email.value, password.value, displayName.value)
+  console.log('user signed up');
+}
 </script>
 
 <style>
