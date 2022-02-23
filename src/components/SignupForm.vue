@@ -11,7 +11,6 @@
 
 <script setup>
 import { ref } from 'vue';
-// import { useSignup } from '../composables/useSignup';
 import useSignup from '../composables/useSignup'
 
 const displayName = ref('')
