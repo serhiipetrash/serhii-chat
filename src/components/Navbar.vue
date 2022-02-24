@@ -4,12 +4,22 @@
       <p>Hey there...</p>
       <p class="email">Currently logged in as...</p>
     </div>
-    <button>Logout</button>
+    <button @click="handleClick">Logout</button>
   </nav>
 </template>
 
 <script setup>
+import useLogout from '../composables/useLogout';
 
+
+const { logout, error } = useLogout()
+
+const handleClick = async () => {
+  await logout()
+  if (!error.value) {
+    console.log('user logged out');
+  }
+}
 </script>
 
 <style>
