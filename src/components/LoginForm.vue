@@ -12,6 +12,8 @@
 import { ref } from 'vue';
 import useLogin from '../composables/useLogin';
 
+const emit = defineEmits(['login'])
+
 const email = ref('')
 const password = ref('')
 
@@ -20,7 +22,7 @@ const { error, login } = useLogin()
 const handleSubmit = async () => {
   await login(email.value, password.value)
   if (!error.value) {
-    console.log('user logged in')
+    emit('login')
   }
 }
 </script>

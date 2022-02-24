@@ -13,6 +13,8 @@
 import { ref } from 'vue';
 import useSignup from '../composables/useSignup'
 
+const emit = defineEmits(['signup'])
+
 const displayName = ref('')
 const email = ref('')
 const password = ref('')
@@ -22,7 +24,7 @@ const { error, signup } = useSignup()
 const handleSubmit = async () => {
   await signup(email.value, password.value, displayName.value)
   if (!error.value) {
-    console.log('user signed up')
+    emit('signup')
   }
 }
 </script>
